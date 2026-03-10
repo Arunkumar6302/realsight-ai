@@ -135,7 +135,7 @@ export function ResultsDisplay({ results, isProcessing }: ResultsDisplayProps) {
                 )}
               </div>
             </div>
-          </motion.div>
+          </div>
         ))}
       </div>
     </motion.div>
