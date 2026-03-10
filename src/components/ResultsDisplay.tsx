@@ -32,11 +32,7 @@ export function ResultsDisplay({ results, isProcessing }: ResultsDisplayProps) {
   const overallVerdict = fakeCount > realCount ? "FAKE" : "REAL";
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      className="space-y-6"
-    >
+    <div className="space-y-6">
       {/* Summary */}
       {allFaces.length > 0 && (
         <div className={`rounded-xl border p-6 ${
