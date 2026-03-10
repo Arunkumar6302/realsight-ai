@@ -5,10 +5,11 @@ import { VideoUpload } from "@/components/VideoUpload";
 import { ScanOverlay } from "@/components/ScanOverlay";
 import { ResultsDisplay } from "@/components/ResultsDisplay";
 import { WebcamCapture } from "@/components/WebcamCapture";
+import { VideoUrlAnalysis } from "@/components/VideoUrlAnalysis";
 import { useVideoAnalysis } from "@/hooks/useVideoAnalysis";
 import { Button } from "@/components/ui/button";
 
-type View = "hero" | "upload" | "webcam";
+type View = "hero" | "upload" | "webcam" | "url";
 
 const Index = () => {
   const [view, setView] = useState<View>("hero");
@@ -24,12 +25,19 @@ const Index = () => {
     setView("hero");
   };
 
+  const viewTitles: Record<Exclude<View, "hero">, { title: string; subtitle: string }> = {
+    upload: { title: "Real-Time Deepfake Detection", subtitle: "Video Face Analysis" },
+    webcam: { title: "Live Webcam Detection", subtitle: "Real-time face analysis from your camera" },
+    url: { title: "Video URL Analysis", subtitle: "Analyze a live video stream for deepfakes" },
+  };
+
   return (
     <div className="min-h-screen bg-background">
       {view === "hero" ? (
         <HeroSection
           onGetStarted={() => setView("upload")}
           onLiveDetection={() => setView("webcam")}
+          onUrlAnalysis={() => setView("url")}
         />
       ) : (
         <div className="max-w-4xl mx-auto px-4 py-8">
@@ -41,10 +49,10 @@ const Index = () => {
               </Button>
               <div>
                 <h1 className="text-xl font-heading font-bold text-foreground">
-                  {view === "webcam" ? "Live Webcam Detection" : "Real-Time Deepfake Detection"}
+                  {viewTitles[view].title}
                 </h1>
                 <p className="text-sm text-muted-foreground">
-                  {view === "webcam" ? "Real-time face analysis from your camera" : "Video Face Analysis"}
+                  {viewTitles[view].subtitle}
                 </p>
               </div>
             </div>
@@ -56,9 +64,9 @@ const Index = () => {
             )}
           </div>
 
-          {view === "webcam" ? (
-            <WebcamCapture />
-          ) : (
+          {view === "webcam" && <WebcamCapture />}
+          {view === "url" && <VideoUrlAnalysis />}
+          {view === "upload" && (
             <>
               {!videoUrl ? (
                 <VideoUpload onVideoSelected={analyzeVideo} isProcessing={isProcessing} />
