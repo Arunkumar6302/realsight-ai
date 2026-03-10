@@ -23,9 +23,9 @@ const Index = () => {
     <div className="min-h-screen bg-background">
       <AnimatePresence mode="wait">
         {view === "hero" ? (
-          <motion.div key="hero" exit={{ opacity: 0, y: -20 }} transition={{ duration: 0.3 }}>
+          <div key="hero">
             <HeroSection onGetStarted={() => setView("analyze")} />
-          </motion.div>
+          </div>
         ) : (
           <motion.div
             key="analyze"
