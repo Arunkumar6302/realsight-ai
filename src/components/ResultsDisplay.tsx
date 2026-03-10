@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import { ShieldCheck, ShieldAlert, AlertTriangle } from "lucide-react";
 
 export interface FaceResult {
@@ -33,11 +32,7 @@ export function ResultsDisplay({ results, isProcessing }: ResultsDisplayProps) {
   const overallVerdict = fakeCount > realCount ? "FAKE" : "REAL";
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      className="space-y-6"
-    >
+    <div className="space-y-6">
       {/* Summary */}
       {allFaces.length > 0 && (
         <div className={`rounded-xl border p-6 ${
@@ -75,11 +70,8 @@ export function ResultsDisplay({ results, isProcessing }: ResultsDisplayProps) {
       <div className="space-y-4">
         <h3 className="font-heading font-semibold text-foreground text-lg">Frame Analysis</h3>
         {results.map((result, i) => (
-          <motion.div
+          <div
             key={i}
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: i * 0.05 }}
             className="bg-card border border-border rounded-lg p-4"
           >
             <div className="flex items-start gap-4">
@@ -143,10 +135,10 @@ export function ResultsDisplay({ results, isProcessing }: ResultsDisplayProps) {
                 )}
               </div>
             </div>
-          </motion.div>
+          </div>
         ))}
       </div>
-    </motion.div>
+    </div>
   );
 }
 

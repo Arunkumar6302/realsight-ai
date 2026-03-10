@@ -1,5 +1,4 @@
 import { useCallback, useState } from "react";
-import { motion } from "framer-motion";
 import { Upload, Film } from "lucide-react";
 
 interface VideoUploadProps {
@@ -23,10 +22,8 @@ export function VideoUpload({ onVideoSelected, isProcessing }: VideoUploadProps)
   }, [onVideoSelected]);
 
   return (
-    <motion.div
-      initial={{ opacity: 0, scale: 0.95 }}
-      animate={{ opacity: 1, scale: 1 }}
-      className={`relative border-2 border-dashed rounded-xl p-12 text-center transition-all duration-300 cursor-pointer ${
+    <div
+      className={`relative border-2 border-dashed rounded-xl p-12 text-center transition-colors cursor-pointer ${
         isDragging ? "border-primary bg-primary/5" : "border-border hover:border-primary/40"
       } ${isProcessing ? "pointer-events-none opacity-50" : ""}`}
       onDragOver={(e) => { e.preventDefault(); setIsDragging(true); }}
@@ -56,6 +53,6 @@ export function VideoUpload({ onVideoSelected, isProcessing }: VideoUploadProps)
           </p>
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 }

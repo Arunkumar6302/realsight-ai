@@ -1,5 +1,5 @@
 import { useRef, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { AnimatePresence } from "framer-motion";
 import { ArrowLeft, RotateCcw } from "lucide-react";
 import { HeroSection } from "@/components/HeroSection";
 import { VideoUpload } from "@/components/VideoUpload";
@@ -23,14 +23,12 @@ const Index = () => {
     <div className="min-h-screen bg-background">
       <AnimatePresence mode="wait">
         {view === "hero" ? (
-          <motion.div key="hero" exit={{ opacity: 0, y: -20 }} transition={{ duration: 0.3 }}>
+          <div key="hero">
             <HeroSection onGetStarted={() => setView("analyze")} />
-          </motion.div>
+          </div>
         ) : (
-          <motion.div
+          <div
             key="analyze"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
             className="max-w-4xl mx-auto px-4 py-8"
           >
             {/* Header */}
@@ -40,10 +38,10 @@ const Index = () => {
                   <ArrowLeft className="w-5 h-5" />
                 </Button>
                 <div>
-                  <h1 className="text-2xl font-heading font-bold text-foreground">
-                    Deep<span className="text-primary">Guard</span>
+                  <h1 className="text-xl font-heading font-bold text-foreground">
+                    Real-Time Deepfake Detection
                   </h1>
-                  <p className="text-sm text-muted-foreground">Video Deepfake Analysis</p>
+                  <p className="text-sm text-muted-foreground">Video Face Analysis</p>
                 </div>
               </div>
               {(videoUrl || results.length > 0) && (
@@ -80,7 +78,7 @@ const Index = () => {
                 <ResultsDisplay results={results} isProcessing={isProcessing} />
               </div>
             )}
-          </motion.div>
+          </div>
         )}
       </AnimatePresence>
     </div>
