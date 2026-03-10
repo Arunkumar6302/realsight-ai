@@ -1,5 +1,4 @@
 import { useCallback, useState } from "react";
-import { motion } from "framer-motion";
 import { Upload, Film } from "lucide-react";
 
 interface VideoUploadProps {
