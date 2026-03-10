@@ -53,6 +53,6 @@ export function VideoUpload({ onVideoSelected, isProcessing }: VideoUploadProps)
           </p>
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 }

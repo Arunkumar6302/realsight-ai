@@ -78,7 +78,7 @@ const Index = () => {
                 <ResultsDisplay results={results} isProcessing={isProcessing} />
               </div>
             )}
-          </motion.div>
+          </div>
         )}
       </AnimatePresence>
     </div>
