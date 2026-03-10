@@ -70,11 +70,8 @@ export function ResultsDisplay({ results, isProcessing }: ResultsDisplayProps) {
       <div className="space-y-4">
         <h3 className="font-heading font-semibold text-foreground text-lg">Frame Analysis</h3>
         {results.map((result, i) => (
-          <motion.div
+          <div
             key={i}
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: i * 0.05 }}
             className="bg-card border border-border rounded-lg p-4"
           >
             <div className="flex items-start gap-4">
