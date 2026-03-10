@@ -1,5 +1,5 @@
 import { useRef, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { AnimatePresence } from "framer-motion";
 import { ArrowLeft, RotateCcw } from "lucide-react";
 import { HeroSection } from "@/components/HeroSection";
 import { VideoUpload } from "@/components/VideoUpload";
